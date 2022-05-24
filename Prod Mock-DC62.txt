@@ -1,0 +1,379 @@
+rows 0
+system node show
+aggr show
+storage failover show
+cluster show
+network interface show
+storage failover show-giveback
+snapmirror show -fields healthy
+snapmirror show -fields lag-time,state,status,schedule
+
+*************************************************************************************
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_onb_prod_backup_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_dataservices_prod_job_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_boomi_ops_vol01
+
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_bizx_prod_applog_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_bizx_prod_heapdump_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_bizx_prod_webcache_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_bizx_prod_weblog_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_bizx_prod_birt_vol01
+
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_wfa_prod_cifs
+
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_onb_prod_webfarm_vol01
+
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_lms_prod_icontent_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_lms_prod_applog_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_lms_prod_dumps_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_lms_prod_quickguides_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_lms_prod_weblog_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_lms_prod_icontent_e_vol01
+
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_data_vol00
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol00
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol02
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol03
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol04
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol05
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol06
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol07
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol08
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol09
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol10
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol11
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol12
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol13
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol14
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol15
+
+***********************************************************************************************************
+export-policy rule show -vserver svm_ss62cvhanas01 -fields superuser,rorule,rwrule,anon -policyname default
+export-policy rule show -vserver svm_ss62cvhanas01 -fields superuser,rorule,rwrule,anon -policyname dc62_lms_nfs_export_policy
+export-policy rule show -vserver svm_ss62cvhanas01 -fields superuser,rorule,rwrule,anon -policyname dc62_bizx_nfs_export_policy
+export-policy rule show -vserver svm_ss62cvhanas01 -fields superuser,rorule,rwrule,anon -policyname dc62_integrations_nfs_export_policy
+export-policy rule show -vserver svm_ss62cvhanas01 -fields superuser,rorule,rwrule,anon -policyname dc62_jam_nfs_export_policy
+
+********************************************************************************************
+Cifs share
+vserver cifs share show dc62_wfa_prod_cifs
+vserver cifs share show dc62_onb_prod_webfarm_vol01
+vserver cifs share show dc62_lms_prod_icontent_vol01
+vserver cifs share show dc62_lms_prod_icontent_e_vol01
+vserver cifs share show dc62_onb_prod_backup_vol01
+
+vserver security file-directory show -vserver svm_ss62cvhanas01 -path /dc62_wfa_prod_cifs
+vserver security file-directory show -vserver svm_ss62cvhanas01 -path /dc62_onb_prod_webfarm_vol01
+vserver security file-directory show -vserver svm_ss62cvhanas01 -path /dc62_lms_prod_icontent_vol01
+vserver security file-directory show -vserver svm_ss62cvhanas01 -path /dc62_lms_prod_icontent_e_vol01
+vserver security file-directory show -vserver svm_ss62cvhanas01 -path /dc62_onb_prod_backup_vol01
+*****************************************************************************************
+
+date
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_dataservices_prod_job_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_boomi_ops_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_applog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_heapdump_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_webcache_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_weblog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_birt_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_wfa_prod_cifs
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_onb_prod_webfarm_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_onb_prod_backup_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_icontent_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_applog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_dumps_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_quickguides_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_weblog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_icontent_e_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_data_vol00
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol00
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol02
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol03
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol04
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol05
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol06
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol07
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol08
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol09
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol10
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol11
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol12
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol13
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol14
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol15
+date
+
+*****************************************************************************************************************************
+date
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_dataservices_prod_job_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_boomi_ops_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_bizx_prod_applog_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_bizx_prod_heapdump_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_bizx_prod_webcache_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_bizx_prod_weblog_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_bizx_prod_birt_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_wfa_prod_cifs
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_onb_prod_webfarm_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_onb_prod_backup_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_lms_prod_icontent_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_lms_prod_applog_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_lms_prod_dumps_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_lms_prod_quickguides_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_lms_prod_weblog_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_lms_prod_icontent_e_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_data_vol00
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol00
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol01
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol02
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol03
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol04
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol05
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol06
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol07
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol08
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol09
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol10
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol11
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol12
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol13
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol14
+snapmirror update -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol15
+date
+
+***************************************************************************************************
+date
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_dataservices_prod_job_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_boomi_ops_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_applog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_heapdump_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_webcache_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_weblog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_birt_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_wfa_prod_cifs
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_onb_prod_webfarm_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_onb_prod_backup_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_icontent_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_applog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_dumps_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_quickguides_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_weblog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_icontent_e_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_data_vol00
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol00
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol02
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol03
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol04
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol05
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol06
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol07
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol08
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol09
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol10
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol11
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol12
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol13
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol14
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol15
+date
+
+********************************************************************************************************************
+date
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_dataservices_prod_job_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_boomi_ops_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_bizx_prod_applog_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_bizx_prod_heapdump_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_bizx_prod_webcache_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_bizx_prod_weblog_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_bizx_prod_birt_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_wfa_prod_cifs
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_onb_prod_webfarm_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_onb_prod_backup_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_dc19_wfa_prod 
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_lms_prod_icontent_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_lms_prod_applog_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_lms_prod_dumps_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_lms_prod_quickguides_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_lms_prod_weblog_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_lms_prod_icontent_e_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_data_vol00
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol00
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol01
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol02
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol03
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol04
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol05
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol06
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol07
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol08
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol09
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol10
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol11
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol12
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol13
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol14
+snapmirror quiesce -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol15
+date
+
+********************************************************************************************
+date
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_dataservices_prod_job_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_boomi_ops_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_applog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_heapdump_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_webcache_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_weblog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_birt_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_wfa_prod_cifs
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_onb_prod_webfarm_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_onb_prod_backup_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_icontent_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_applog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_dumps_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_quickguides_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_weblog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_icontent_e_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_data_vol00
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol00
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol02
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol03
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol04
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol05
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol06
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol07
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol08
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol09
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol10
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol11
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol12
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol13
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol14
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol15
+date
+
+**********************************************************************************************************
+date
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_dataservices_prod_job_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_boomi_ops_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_bizx_prod_applog_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_bizx_prod_heapdump_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_bizx_prod_webcache_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_bizx_prod_weblog_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_bizx_prod_birt_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_wfa_prod_cifs
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_onb_prod_webfarm_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_onb_prod_backup_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_lms_prod_icontent_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_lms_prod_applog_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_lms_prod_dumps_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_lms_prod_quickguides_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_lms_prod_weblog_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_lms_prod_icontent_e_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_data_vol00
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol00
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol01
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol02
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol03
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol04
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol05
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol06
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol07
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol08
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol09
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol10
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol11
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol12
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol13
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol14
+snapmirror break -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol15
+date
+
+**********************************************************************************************************
+date
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_dataservices_prod_job_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_boomi_ops_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_applog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_heapdump_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_webcache_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_weblog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_bizx_prod_birt_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_wfa_prod_cifs
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_onb_prod_webfarm_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_onb_prod_backup_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_icontent_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_applog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_dumps_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_quickguides_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_weblog_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_lms_prod_icontent_e_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_data_vol00
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol00
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol01
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol02
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol03
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol04
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol05
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol06
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol07
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol08
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol09
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol10
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol11
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol12
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol13
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol14
+snapmirror show -fields lag-time,state,status,schedule -destination-path svm_ss62cvhanas01:dc62_jam_prod_filestore_vol15
+date
+
+**********************************************************************************************************
+date
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_dataservices_prod_job_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_boomi_ops_vol01
+
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_bizx_prod_applog_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_bizx_prod_heapdump_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_bizx_prod_webcache_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_bizx_prod_weblog_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_bizx_prod_birt_vol01
+
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_wfa_prod_cifs
+
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_onb_prod_webfarm_vol01
+
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_lms_prod_icontent_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_lms_prod_applog_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_lms_prod_dumps_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_lms_prod_quickguides_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_lms_prod_weblog_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_lms_prod_icontent_e_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_onb_prod_backup_vol01
+
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_data_vol00
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol00
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol01
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol02
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol03
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol04
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol05
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol06
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol07
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol08
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol09
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol10
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol11
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol12
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol13
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol14
+volume show -fields language,junction-path,policy,snapshot-policy,type,security-style dc62_jam_prod_filestore_vol15
+
+***********************************************************************************************************
+
+
+
+
+
+
